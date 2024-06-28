@@ -1,0 +1,28 @@
+{% extends 'layout.html' %}
+
+{% block title %}Edit Profile{% endblock %}
+
+{% block content %}
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+    <div class="flashes">
+    {% for category, message in messages %}
+        <p class="{{ category }}">{{ message }}</p>
+    {% endfor %}
+    </div>
+{% endif %}
+{% endwith %}
+<form action="{{ url_for('edit_profile') }}" method="post" autocomplete="off">
+    <label for="username">
+        <i class="fas fa-user"></i>
+    </label>
+    <input type="text" name="username" value="{{ account['username'] }}" id="username" required aria-label="Username">
+    <label for="email">
+        <i class="fas fa-envelope"></i>
+    </label>
+    <input type="email" name="email" value="{{ account['email'] }}" id="email" required aria-label="Email">
+    <div class="msg">{{ msg }}</div>
+    <input type="submit" value="Update Profile">
+    <a href="{{ url_for('change_password') }}" class="btn btn-primary">Edit Password</a>
+</form>
+{% endblock %}
