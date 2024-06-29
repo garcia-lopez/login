@@ -2,6 +2,7 @@
 <html>
 	<head>
 		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>{% block title %}{% endblock %}</title>
 		<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 		<link rel="preconnect" href="https://fonts.googleapis.com">
@@ -10,19 +11,18 @@
 	</head>
 	<body class="loggedin">
 		<nav class="navtop">
-			<div>
-				<h1>Website Title</h1>
-                <a href="{{ url_for('home') }}"><i class="fas fa-home"></i>Home</a>
-				<a href="{{ url_for('profile') }}"><i class="fas fa-user-circle"></i>Profile</a>
-				<a href="{{ url_for('logout') }}"><i class="fas fa-sign-out-alt"></i>Logout</a>
+			<div >
+				<h1 class="title">Website Title</h1>
+			</div>
+			<div class="links">
+				<a href="{{ url_for('home') }}"> <button class="button_class">Home</button></a>
+			    <a href="{{ url_for('profile') }}"> <button class="button_class">Profile</button></a>
+			    <a href="{{ url_for('logout') }}"> <button class="button_class">Logout</button></a>
 			</div>
 		</nav>
-		<div class="content">
-        </div>
-       
-			{% block content %}{% endblock %}
-		</div>
-        <script src="{{ url_for('static', filename='script.js') }}">
+		  {% block content %}{% endblock %}
+        <script src="{{ url_for('static', filename='js/script.js') }}">
     </script>
+		<script src="{{ url_for('static', filename='js/inactivity.js') }}"></script>
 	</body>
 </html>

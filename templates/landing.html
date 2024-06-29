@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Website</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playwrite+DE+Grund:wght@100..400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playwrite+US+Modern:wght@100..400&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+    </header>
+    <main class="main_landing">
+       <div class="center-content">
+        <h1 class="first_title">Just another Website</h1>
+        <p class="by_me">By Pau</p>
+        <div class="links">
+            <a href="{{ url_for('login') }}"> <button class="button_class">Login</button></a>
+            <a href="{{ url_for('register') }}"> <button class="button_class">Register</button></a>
+        </div>
+       </div>
+    </main>
+    <footer>
+        <p class="by_me">@2024</p>
+    </footer>
+
+    <!-- Optional scripts can be placed at the end of the body -->
+</body>
+</html>

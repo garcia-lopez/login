@@ -1,45 +1,47 @@
 <!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="utf-8">
-		<title>Register</title>
-		<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
-	</head>
-	<body>
-		<div class="register">
-			<h1>Register</h1>
-			<div class="links">
-				<a href="{{ url_for('login') }}">Login</a>
-				<a href="{{ url_for('register') }}" class="active">Register</a>
-			</div>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playwrite+DE+Grund:wght@100..400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playwrite+US+Modern:wght@100..400&display=swap" rel="stylesheet">
+</head>
+<body class="login_body">
+    <div class="register">
+        <form class="login_form" action="{{ url_for('register') }}" method="post" autocomplete="off">
+			<h1 class="title">Register</h1>
 			{% with messages = get_flashed_messages(with_categories=true) %}
-  {% if messages %}
-    {% for category, message in messages %}
-      <div class="alert alert-{{ category }}">
-        {{ message }}
-      </div>
-    {% endfor %}
-  {% endif %}
-{% endwith %}
-			<form action="{{ url_for('register') }}" method="post" autocomplete="off">
-				<label for="username">
-					<i class="fas fa-user"></i>
-				</label>
-				<input type="text" name="username" placeholder="Username" id="username" required>
-				<label for="password">
-					<i class="fas fa-lock"></i>
-				</label>
-				<input type="password" name="password" placeholder="Password" id="password" required>
-				<label for="email">
-					<i class="fas fa-envelope"></i>
-				</label>
-				<input type="email" name="email" placeholder="Email" id="email" required>
-				<div class="msg">{{ msg }}</div>
-				<input type="submit" value="Register">
-			</form>
-		</div>
-		<script src="{{ url_for('static', filename='script.js') }}">
-    </script>
-	</body>
+				{% if messages %}
+					{% for category, message in messages %}
+						<p class="alert alert-{{ category }}">
+							{{ message }}
+						</p>
+					{% endfor %}
+				{% endif %}
+			{% endwith %}
+
+           <div class="form_inputs">
+			 <label class="lilac_text" for="username">Username:</label>
+		 	 <input class="inputs" type="text" name="username" placeholder="Username" id="username" required>
+		   </div>
+		   <div class="form_inputs">
+			<label class="lilac_text" for="password">Password:</label>
+			<input class="inputs" type="password" name="password" placeholder="Password" id="password" required>
+		   </div>
+		   <div class="form_inputs">
+			<label class="lilac_text" for="email">Email:</label>
+            <input class="inputs" type="email" name="email" placeholder="Email" id="email" required>
+		   </div>
+            <div class="msg">{{ msg }}</div>
+            <div class="button_section">
+                <a href="{{ url_for('login') }}" class="button_class">Login</a>
+				<button type="submit" class="button_class">Register</button>
+            </div>
+        </form>
+    </div>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
 </html>

@@ -3,26 +3,35 @@
 {% block title %}Edit Profile{% endblock %}
 
 {% block content %}
-{% with messages = get_flashed_messages(with_categories=true) %}
-{% if messages %}
-    <div class="flashes">
-    {% for category, message in messages %}
-        <p class="{{ category }}">{{ message }}</p>
-    {% endfor %}
-    </div>
-{% endif %}
-{% endwith %}
-<form action="{{ url_for('edit_profile') }}" method="post" autocomplete="off">
-    <label for="username">
-        <i class="fas fa-user"></i>
-    </label>
-    <input type="text" name="username" value="{{ account['username'] }}" id="username" required aria-label="Username">
-    <label for="email">
-        <i class="fas fa-envelope"></i>
-    </label>
-    <input type="email" name="email" value="{{ account['email'] }}" id="email" required aria-label="Email">
-    <div class="msg">{{ msg }}</div>
-    <input type="submit" value="Update Profile">
-    <a href="{{ url_for('change_password') }}" class="btn btn-primary">Edit Password</a>
-</form>
+<div class="center-content">
+    <form class="profile_card" action="{{ url_for('edit_profile') }}" method="post" autocomplete="off">
+        <h2 class="profile_title">Profile Page</h2>
+        <p>Your account details are below:</p>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        <div class="flashes">
+        {% for category, message in messages %}
+            <p class="{{ category }}">{{ message }}</p>
+        {% endfor %}
+        </div>
+    {% endif %}
+    {% endwith %}
+        <div class="form_inputs"> 
+             <label class="lilac_text" for="username">Username:</label>
+        <input class="inputs" type="text" name="username" value="{{ account['username'] }}" id="username" required aria-label="Username">
+        </div>
+        <div class="form_inputs">
+            <label class="lilac_text" for="email">
+                Email:
+            </label>
+            <input class="inputs" type="email" name="email" value="{{ account['email'] }}" id="email" required aria-label="Email">
+        </div>
+        <div class="msg">{{ msg }}</div>
+        <div class="button_section">
+            <button type="submit" value="Update Profile" class="button_class"> Update profile </button>
+            <a href="{{ url_for('change_password') }}" class="button_class">Edit Password</a>
+        </div>
+        
+    </form>
+</div>
 {% endblock %}
