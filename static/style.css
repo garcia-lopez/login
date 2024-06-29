@@ -207,6 +207,7 @@ footer {
 
 .inputs {
   border-radius: 16px;
+  padding: 5px;
   border-style: none;
   background-color: #E8EEEE;
   font-family: "Playwrite DE Grund", cursive;

@@ -80,13 +80,15 @@ def register():
     #Check if "username", "password" and "email" POST requests exist (user submitted form)
     if request.method == 'POST' and 'username' in request.form and 'password' in request.form and 'email' in request.form:
         # crear variables para una fácil escritura
-        username = request.form['username']
+        username = request.form['username'].lower()
         password = request.form['password']
         email = request.form['email']
         # Validate the input
         error = validate_user_input(email,username,password)
+        print(error)
         if error:
             flash(error, 'error')
+            return render_template('register.html')
 
         if not verify_user_already_exists(username, mysql):
         # If account does not exist, create a new account
@@ -124,7 +126,7 @@ def edit_profile():
             if username == session['user_info']['username'] and email == session['user_info']['email']:
                 flash('No se realizaron cambios', 'error')
             elif verify_user_already_exists(username, mysql) and username != session['user_info']['username']:
-                flash('El nombre de usuario ya está en uso. Por favor, elige otro.', 'error')
+                flash('The username is already in use. Please choose another.', 'error')
             elif error:
                 flash(error, 'error')
             else:
@@ -135,30 +137,27 @@ def edit_profile():
 
 @app.route('/change_password/', methods=['GET', 'POST'])
 def change_password():
-    print("Change password HERE")
-    print(request.form)
-    print(request.method)
+    print("hola")
     if 'loggedin' in session:
-        print("looged in")
         if request.method == 'POST' and 'old_password' in request.form and 'new_password' in request.form and 'confirm_password' in request.form:
             old_password = request.form['old_password']
             new_password = request.form['new_password']
             confirm_password = request.form['confirm_password']
-
+            if old_password == '' or new_password == '' or confirm_password == '':
+                flash('Por favor, rellena todos los campos', 'error')
+                return render_template('change_password.html')
             #Asegúrate de que la contraseña actual sea correcta y que las nuevas contraseñas coincidan
             if not val_password(old_password, session['user_info']['password']):
                 print("La contraseña actual es incorrecta")
-                flash('La contraseña actual es incorrecta', 'error')
+                flash('The current password is incorrect.', 'error')
             elif new_password != confirm_password:
                 print("Las contraseñas no coinciden")
-                flash('Las contraseñas no coinciden', 'error')
+                flash('The passwords do not match.', 'error')
             #Si todo está bien, actualiza la contraseña
             else:
-                print("Actualizando contraseña")
                 update_password(session['id'], new_password, mysql)
-                return redirect(url_for('profile'))
+                flash('Password successfully updated', 'success')
 
-            
         return render_template('change_password.html')
     return redirect(url_for('login'))
 

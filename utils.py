@@ -2,7 +2,7 @@ import re
 import bcrypt
 
 def check_password(password):
-    return len(password) <= 72 # To use the hash library the password must be less 72 characters long 
+    return len(password) >= 8 and len(password) <= 72# To use the hash library the password must be less 72 characters long 
 
 def check_email(email):
     return re.match(r"[^@]+@[^@]+\.[^@]+", email) is not None
@@ -13,11 +13,11 @@ def check_username(username):
 
 def validate_user_input(email, username, password=None): 
     if password is not None and not check_password(password):
-        return "La contraseña no puede ser mayor a 72 caracteres."
+        return "The password cannot be less than 8 characters nor more than 72."
     if not check_email(email):
-        return "El correo no es válido."
+        return "The email is not valid."
     if not check_username(username):
-        return "El nombre de usuario no es válido."
+        return "No special characters are allowed in the username."
     else: 
         return None
 
