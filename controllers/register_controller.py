@@ -25,7 +25,7 @@ def register_function(mysql):
          return redirect(url_for('login'))
         else:
             # Si el usuario ya existe, envía un mensaje flash
-          flash('El nombre de usuario ya está en uso. Por favor, elige otro.', 'error')
+          flash('The username is already in use. Please choose another.', 'error')
 
     elif request.method == 'POST':
         # Form is empty... (no POST data)
