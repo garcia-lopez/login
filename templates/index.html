@@ -23,7 +23,7 @@
                 </div>
             {% endif %}
             {% endwith %}
-            <div class="form_inputs">
+            <div class="form_inputs_username">
                 <label class="lilac_text" for="username">Username:</label>
                 <input class="inputs" type="text" id="username" name="username" required>
             </div>
@@ -31,6 +31,7 @@
             <div class="form_inputs">
                 <label class="lilac_text" for="password">Password:</label>
                 <input class="inputs" type="password" id="password" name="password" required>
+                <img id="eye" src="{{ url_for('static', filename='images/open_eye.svg') }}" data-open-eye="{{ url_for('static', filename='images/open_eye.svg') }}" data-closed-eye="{{ url_for('static', filename='images/closed_eye.svg') }}" class="eye" onclick="showPassword()">
             </div>
             <div class="button_section">
                 <button type="submit" class="button_class">Login</button>

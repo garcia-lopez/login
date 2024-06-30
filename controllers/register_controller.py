@@ -1,6 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, session, flash
-from flask_limiter import Limiter
-from flask_limiter.util import get_remote_address
+from flask import Flask, render_template, request, redirect, url_for, flash
 #local imports
 from models.users import *
 from static.utils.utils import *

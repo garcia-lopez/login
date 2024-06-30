@@ -38,3 +38,15 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+
+function showPassword() {
+    var x = document.getElementById("password");
+    var y = document.getElementById("eye");
+    if (x.type === "password") {
+        x.type = "text";
+        y.src = y.getAttribute('data-closed-eye');
+    } else {
+        x.type = "password";
+        y.src = y.getAttribute('data-open-eye');
+    }
+}

@@ -38,6 +38,7 @@ def change_password_function(session, mysql):
             old_password = request.form['old_password']
             new_password = request.form['new_password']
             confirm_password = request.form['confirm_password']
+            
             if old_password == '' or new_password == '' or confirm_password == '':
                 flash('Por favor, rellena todos los campos', 'error')
                 return render_template('change_password.html')
@@ -45,6 +46,9 @@ def change_password_function(session, mysql):
             if not val_password(old_password, session['user_info']['password']):
                 print("La contraseña actual es incorrecta")
                 flash('The current password is incorrect.', 'error')
+            if not check_password(new_password):
+                print("La contraseña no cumple con los requisitos")
+                flash('The password cannot be less than 8 characters nor more than 72.', 'error')
             elif new_password != confirm_password:
                 print("Las contraseñas no coinciden")
                 flash('The passwords do not match.', 'error')
