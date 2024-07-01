@@ -46,6 +46,7 @@ html {
   font-family: "Playwrite US Modern", cursive;
   color: #9AE8B7;
   transition: all 0.5s ease; /* Smooth transition */
+  font-weight: bolder;
 }
 
 /* Color of the h1 element on hover */
@@ -164,6 +165,7 @@ footer {
 }
 .lilac_text {
   color: #DAA1E5;
+  font-weight: bold;
 }
 
 /*Styling the form*/
