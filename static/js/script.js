@@ -39,14 +39,34 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-function showPassword() {
-    var x = document.getElementById("password");
-    var y = document.getElementById("eye");
-    if (x.type === "password") {
-        x.type = "text";
-        y.src = y.getAttribute('data-closed-eye');
+function showPassword(passwordInput, eyeIcon) {
+    if (passwordInput.type === "password") {
+        passwordInput.type = "text";
+        eyeIcon.src = eyeIcon.getAttribute('data-closed-eye');
     } else {
-        x.type = "password";
-        y.src = y.getAttribute('data-open-eye');
+        passwordInput.type = "password";
+        eyeIcon.src = eyeIcon.getAttribute('data-open-eye');
     }
 }
+
+// Setting the function to show the password when the eye icon is clicked
+
+//Login  and register form
+document.getElementById("eye").addEventListener("click", function() {
+    var passwordInput = document.getElementById("password");
+    var eyeIcon = this; // 'this' refers to the element that triggered the event
+    showPassword(passwordInput, eyeIcon);
+});
+
+//Change password form
+document.getElementById("eye").addEventListener("click", function() {
+    var passwordInput = document.getElementById("old_password");
+    var eyeIcon = this; // 'this' refers to the element that triggered the event
+    showPassword(passwordInput, eyeIcon);
+});
+
+document.getElementById("new_eye").addEventListener("click", function() {
+    var passwordInput = document.getElementById("new_password");
+    var eyeIcon = this; // 'this' refers to the element that triggered the event
+    showPassword(passwordInput, eyeIcon);
+});

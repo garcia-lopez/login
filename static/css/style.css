@@ -146,8 +146,8 @@ footer {
   align-items: center;
   background-color: #1A545D;
   color: #9AE8B7;
-  width: 70%;
-  max-width: 350px;
+  width: 500px;
+  max-width: 500px;
   border-radius: 16px;
   padding: 20px;
   box-shadow: 0 4px 8px #DAA1E5;
@@ -196,7 +196,7 @@ footer {
 }
 
 /*Form inputs*/
-.form_inputs, .form_inputs_username   {
+.form_inputs, .form_inputs_username, .form_inputs_email, .form_inputs_password, .form_inputs_password_confirm  {
   font-family: "Playwrite DE Grund", cursive;;
   display: flex;
   justify-content: center;
@@ -205,8 +205,20 @@ footer {
   margin: 20px 50px 20px 50px;
 }
 
+.form_inputs_password {
+  margin-right: 43px;
+}
+
+.form_inputs_password_confirm {
+  margin-right: 120px;
+}
+
 .form_inputs_username {
   margin-right: 111px;
+}
+
+.form_inputs_email {
+  margin-right: 90px;
 }
 
 .inputs {
@@ -218,6 +230,17 @@ footer {
   text-align: center;
 }
 
+/*Hide the password reveal button*/
+input[type="password"]::-ms-reveal, 
+input[type="password"]::-ms-clear {
+    display: none;
+}
+
+input[type="password"]::-webkit-credentials-auto-fill-button,
+input[type="password"]::-webkit-password-field,
+input[type="password"]::-webkit-textfield-decoration-container {
+    display: none;
+}
 p {
   font-family: "Playwrite DE Grund", cursive;
   color: #DAA1E5;

@@ -27,6 +27,7 @@ def register_function(mysql):
 
     elif request.method == 'POST':
         # Form is empty... (no POST data)
+        # I have not use this, cause, all the fields are required. So until the user fills all the fields, the form will not be submitted.
         flash('Please fill out the form!')
     
     return render_template('register.html')

@@ -23,16 +23,17 @@
 				{% endif %}
 			{% endwith %}
 
-           <div class="form_inputs">
+           <div class="form_inputs_username">
 			 <label class="lilac_text" for="username">Username:</label>
 		 	 <input class="inputs" type="text" name="username" placeholder="Username" id="username" required>
 		   </div>
 		   <div class="form_inputs">
 			<label class="lilac_text" for="password">Password:</label>
-			<input class="inputs" type="password" name="password" placeholder="Password" id="password_register" required>
+			<input class="inputs" type="password" name="password" placeholder="Password" id="password" required>
+			<img id="eye" src="{{ url_for('static', filename='images/open_eye.svg') }}" data-open-eye="{{ url_for('static', filename='images/open_eye.svg') }}" data-closed-eye="{{ url_for('static', filename='images/closed_eye.svg') }}" class="eye">
 		   </div>
-		   <div class="form_inputs">
-			<label class="lilac_text" for="email">Email:</label>
+		   <div class="form_inputs_email">
+			<label class="lilac_text" for="email">Email:    </label>
             <input class="inputs" type="email" name="email" placeholder="Email" id="email" required>
 		   </div>
             <div class="msg">{{ msg }}</div>
@@ -43,5 +44,7 @@
         </form>
     </div>
     <script src="{{ url_for('static', filename='js/inactivity.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/script.js') }}">
+    </script>
 </body>
 </html>

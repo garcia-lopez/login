@@ -10,6 +10,8 @@ from controllers.login_controller import login_function, logout_function
 from controllers.home_controller import home_function
 from controllers.register_controller import register_function
 from controllers.profile_controller import edit_profile_function, profile_function, change_password_function
+
+#Welcome to my login, please ignore the spanish comments, I'm from Nicaragua and I'm used to write in spanish.
 app = Flask(__name__)
 
 app.secret_key = 'shape_of_water'
