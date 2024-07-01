@@ -17,13 +17,13 @@ def register_function(mysql):
             flash(error, 'error')
             return render_template('register.html')
 
-        if not verify_user_already_exists(username, mysql):
+        if not verify_user_already_exists(username, email,mysql):
         # If account does not exist, create a new account
          create_user(username, password, email,mysql)
          return redirect(url_for('login'))
         else:
             # Si el usuario ya existe, envía un mensaje flash
-          flash('The username is already in use. Please choose another.', 'error')
+          flash('The username, or email, is already in use. Please choose another.', 'error')
 
     elif request.method == 'POST':
         # Form is empty... (no POST data)
