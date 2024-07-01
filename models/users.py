@@ -16,10 +16,11 @@ def verify_user(username, password, mysql):
         cursor.close()
     return None
 
-def verify_user_already_exists(username, mysql):
+def verify_user_already_exists(username, email,mysql):
     cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+    print(email)
     try:
-        cursor.execute('SELECT * FROM accounts WHERE username = %s', (username,))
+        cursor.execute('SELECT * FROM accounts WHERE username = %s OR email = %s', (username, email,))
         account = cursor.fetchone()
         if account:
             return True
@@ -28,6 +29,7 @@ def verify_user_already_exists(username, mysql):
     finally:
         cursor.close()
     return False
+
 
 def create_user(username, password,email,mysql):
     cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
