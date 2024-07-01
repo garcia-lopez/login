@@ -1,0 +1,12 @@
+Database script
+
+CREATE DATABASE login_system;
+use login_system;
+CREATE DATABASE IF NOT EXISTS `login_system` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+CREATE TABLE IF NOT EXISTS `accounts` (
+   `id` int(11) NOT NULL auto_increment,
+   `username` varchar(50) NOT null,
+   `password` varchar(60) NOT null,
+   `email` varchar(100) NOT null,
+   primary key(`id`)
+) engine=InnoDB auto_increment=2 default charset=utf8;
