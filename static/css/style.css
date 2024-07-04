@@ -3,7 +3,21 @@ html {
 }
 
 
-.center-content {
+.center-content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 500px;
+    width: 500px;
+    border-radius: 50px;
+    text-align: center;
+    background-color: #153548;
+    color: #4e9a8d;
+    position: relative;
+  }
+
+  .center_content_complete{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -20,7 +34,6 @@ html {
 }
 
 /*Layout*/
-
 .navtop {
     display: flex;
     justify-content: space-between;
@@ -110,6 +123,7 @@ body{
 .by_me {
   font-family: "Playwrite DE Grund", cursive;
   margin-bottom: 40px;
+  font-weight: bolder;
   color:#DAA1E5;
 }
 
@@ -122,8 +136,9 @@ footer {
   justify-content: center;
   align-items: center;
   font-family: "Playwrite DE Grund", cursive;
+  position: relative;
   color:#DAA1E5;
-  background-color: #153548;
+  background: transparent;
   width: 100%;
 }
 
@@ -136,7 +151,35 @@ footer {
   height: 100vh;
   width: 100%;
   text-align: center;
-  background-image: linear-gradient(120deg, #153548, #102a3f); 
+  background: linear-gradient(120deg, #153548, #9ae8b7);
+  background-position: center;
+}
+
+/*Div to add an animated decoration to my background*/
+.leaves {
+  background-image: url(../images/leaves_pattern.svg);
+  background-size: 10%;
+  position: absolute;
+  left: 50%;
+  top: 0px;
+  translate: -50% 0%;
+  z-index: 0;
+  height: 100%;
+  width: 100%;
+  min-width: 700px;
+  opacity: 0.1;
+  animation: pan 150s linear infinite;
+  will-change: background-position;
+}
+
+@keyframes pan {
+  /*Keyframes to animate my background*/
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 100% 0%;
+  }
 }
 
 /*Just me trying to style the profile card, why not?*/
